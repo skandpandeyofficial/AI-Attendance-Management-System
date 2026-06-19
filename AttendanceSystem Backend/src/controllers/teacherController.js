@@ -162,9 +162,6 @@ const upload = async (req, res) => {
       });
     }
 
-    console.log("IMAGE URL:", imageUrl);
-    console.log("AI URL:", process.env.AI_SERVICE_URL);
-
     // AI Service
     const response = await axios.post(
       `${process.env.AI_SERVICE_URL}/face-attendance`,
@@ -244,10 +241,8 @@ const upload = async (req, res) => {
       annotatedImageUrl,
     });
   } catch (error) {
-    console.log("FULL ERROR =>", error.response?.data || error.message);
-
     return res.status(500).json({
-      message: error.response?.data || error.message,
+      message: error.message,
     });
   }
 };
