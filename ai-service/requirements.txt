@@ -5,3 +5,5 @@ pillow
 face-recognition
 opencv-python
 numpy
+cloudinary
+python-dotenv
