@@ -120,7 +120,6 @@ const upload = async (req, res) => {
       });
     }
 
-
     // Duplicate Attendance Check
     const alreadyMarked = await AttendanceSchema.findOne({
       sub_code: teacherInfo.teaching_sub,
@@ -164,12 +163,15 @@ const upload = async (req, res) => {
     }
 
     // AI Service
-    const response = await axios.post("http://127.0.0.1:8000/face-attendance", {
-      groupImage: imageUrl,
-      date,
-      students: studentData,
-      subjectCode: teacherInfo.teaching_sub,
-    });
+    const response = await axios.post(
+      `${process.env.AI_SERVICE_URL}/face-attendance`,
+      {
+        groupImage: imageUrl,
+        date,
+        students: studentData,
+        subjectCode: teacherInfo.teaching_sub,
+      },
+    );
 
     const presentStudents = response.data.presentStudents || [];
     const faceIssue = response.data.faceIssue || [];
@@ -405,8 +407,6 @@ const attendance_details = async (req, res) => {
   }
 };
 
-
-
 // export
 const attendance_export = async (req, res) => {
   try {
@@ -459,9 +459,7 @@ const attendance_export = async (req, res) => {
       });
     }
 
-    const admissionNos = [
-      ...new Set(records.map((item) => item.admissionNo)),
-    ];
+    const admissionNos = [...new Set(records.map((item) => item.admissionNo))];
 
     const students = await student.find({
       admissionNo: {
@@ -482,24 +480,17 @@ const attendance_export = async (req, res) => {
       status: item.status,
     }));
 
-    const presentCount = records.filter(
-      (item) => item.status === "P"
-    ).length;
+    const presentCount = records.filter((item) => item.status === "P").length;
 
-    const absentCount = records.filter(
-      (item) => item.status === "A"
-    ).length;
+    const absentCount = records.filter((item) => item.status === "A").length;
 
-    const issueCount = records.filter(
-      (item) => item.status === "I"
-    ).length;
+    const issueCount = records.filter((item) => item.status === "I").length;
 
     const totalRecords = records.length;
 
-    const attendancePercentage = (
-      (presentCount / totalRecords) *
-      100
-    ).toFixed(2);
+    const attendancePercentage = ((presentCount / totalRecords) * 100).toFixed(
+      2,
+    );
 
     return res.status(200).json({
       success: true,
@@ -528,8 +519,6 @@ const attendance_export = async (req, res) => {
     });
   }
 };
-
-
 
 module.exports = {
   profile,
