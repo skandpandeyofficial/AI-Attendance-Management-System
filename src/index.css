@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+html {
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+.react-datepicker {
+  background: #0f172a !important;
+  border: 1px solid #334155 !important;
+}
+
+.react-datepicker__header {
+  background: #111827 !important;
+  border-bottom: 1px solid #334155 !important;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name,
+.react-datepicker__day {
+  color: white !important;
+}
+
+.react-datepicker__day:hover {
+  background: #2563eb !important;
+}
