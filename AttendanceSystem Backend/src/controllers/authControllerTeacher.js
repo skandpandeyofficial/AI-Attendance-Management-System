@@ -22,15 +22,23 @@ const login = async (req, res) => {
   const isMatch = await comparePassword(plainPassword, hashedPassword);
 
   if (isMatch) {
+
+
     // Token
     const token = generateToken(user);
 
-    // token Save by using cookies => Broswer/Postman
+    console.log("TOKEN GENERATED:", token);
+
     res.cookie("token", token, {
       httpOnly: true,
       secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
+
+    console.log("COOKIE SET");
+
+    
 
     res.status(200).json({
       Status: "Teacher Login Successfully ✅",
@@ -42,16 +50,13 @@ const login = async (req, res) => {
   }
 };
 
-
 const logout = async (req, res) => {
   try {
-
     res.clearCookie("token");
 
     res.status(200).json({
       message: "Logout Successfully",
     });
-
   } catch (error) {
     res.status(500).json({
       message: error.message,
