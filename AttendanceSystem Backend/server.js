@@ -14,53 +14,40 @@ const adminRoutes = require("./src/routes/adminRoutes");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
-
-
 const PORT = process.env.PORT;
-
 
 // DB connection function
 DBconnect();
-
 
 app.use(express.json());
 app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: true,
     credentials: true,
-  })
+  }),
 );
-
 
 // Server Listen at PORT
 app.listen(PORT, () => {
   console.log("Server is Running 🚀");
-  
 });
 
 // auth student
 app.use("/student/auth", authRoutesStudent);
 
 //student
-app.use("/student",studentRoutes);
-
+app.use("/student", studentRoutes);
 
 // auth teacher
 app.use("/teacher/auth", authRoutesTeacher);
 
-
 // teacher
-app.use("/teacher",teacherRoutes);
-
-
+app.use("/teacher", teacherRoutes);
 
 // auth admin
 app.use("/admin/auth", authRoutesAdmin);
 
 // admin
-app.use("/admin",adminRoutes);
-
-
-
+app.use("/admin", adminRoutes);
