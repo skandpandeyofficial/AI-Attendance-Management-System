@@ -27,7 +27,6 @@ const login = async (req, res) => {
     // Token
     const token = generateToken(user);
 
-    console.log("TOKEN GENERATED:", token);
 
     res.cookie("token", token, {
       httpOnly: true,
@@ -36,9 +35,7 @@ const login = async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
-    console.log("COOKIE SET");
 
-    
 
     res.status(200).json({
       Status: "Teacher Login Successfully ✅",
