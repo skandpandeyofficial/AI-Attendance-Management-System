@@ -6,7 +6,7 @@
 
 ## 🌐 Live Demo
 
-🔗 **Demo Link:** _Add Live Demo Link Here_
+🔗 **Demo Link:**  https://ai-attendance-management-system-xi.vercel.app
 
 ---
 
