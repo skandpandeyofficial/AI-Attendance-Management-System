@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./components/Home";
 
+import { Navigate } from "react-router-dom";
+
 import StudentLogin from "./components/StudentLogin";
 import StudentSignup from "./components/StudentSignup";
 import StudentLayout from "./components/StudentLayout";
@@ -48,6 +50,7 @@ export default function App() {
             </ProtectedRoute>
           }
         >
+          <Route index element={<Navigate to="student-dashboard" replace />} />
           <Route path="profile" element={<StudentProfile />} />
           <Route path="student-dashboard" element={<StudentDashboard />} />
         </Route>
@@ -64,6 +67,7 @@ export default function App() {
             </ProtectedRoute>
           }
         >
+          <Route index element={<Navigate to="teacher-dashboard" replace />} />
           <Route path="profile" element={<TeacherProfile />} />
           <Route path="students-list" element={<TeacherStudentsList />} />
           <Route path="upload" element={<TeacherUpload />} />
@@ -84,6 +88,7 @@ export default function App() {
             </ProtectedRoute>
           }
         >
+          <Route index element={<Navigate to="add-teachers" replace />} />
           <Route path="add-teachers" element={<AdminAddTeachers />} />
           <Route path="add-students" element={<AdminAddStudents />} />
           <Route path="teachers-list" element={<AdminTeachersList />} />
