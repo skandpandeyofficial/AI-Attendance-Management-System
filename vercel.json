@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/api/:path*",
+      "destination": "https://ai-attendance-management-system-production.up.railway.app/:path*"
     }
   ]
 }
