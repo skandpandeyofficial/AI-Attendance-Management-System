@@ -19,6 +19,9 @@ const PORT = process.env.PORT;
 // DB connection function
 DBconnect();
 
+
+app.set("trust proxy", 1);
+
 app.use(express.json());
 app.use(cookieParser());
 
