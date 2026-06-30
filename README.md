@@ -398,16 +398,16 @@ npm install
 Create a `.env` file inside the backend directory:
 
 ```env
-PORT=YOUR_PORT
+PORT=YOUR_PORT  # Example: 3000/4000/5000/8000
 
-DB_URI=YOUR_MONGODB_CONNECTION_STRING
+DB_URI=YOUR_MONGODB_CONNECTION_STRING   # Example: mongodb+srv://myuser...
 
 JWT_SECRET=YOUR_JWT_SECRET
 
 # Admin Credentials
 
-ADMIN_EMAIL=YOUR_ADMIN_EMAIL
-ADMIN_PASSWORD=YOUR_ADMIN_PASSWORD
+ADMIN_EMAIL=YOUR_ADMIN_EMAIL   # Email used to access the admin panel
+ADMIN_PASSWORD=YOUR_ADMIN_PASSWORD  # Password used to access the admin panel
 
 # Cloudinary
 
