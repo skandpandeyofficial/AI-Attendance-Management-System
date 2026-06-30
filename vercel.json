@@ -1,8 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "https://ai-attendance-management-system-production.up.railway.app/:path*"
+      "source": "/api/(.*)",
+      "destination": "https://ai-attendance-management-system-production.up.railway.app/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
